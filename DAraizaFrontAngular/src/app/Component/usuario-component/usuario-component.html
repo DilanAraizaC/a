@@ -2,76 +2,8 @@
 
     <h1 class="text-center mb-4 mt-4">Información del usuario</h1>
 
+<!-- @for(direccion of usuario.Direcciones; track direccion.idDireccion){
+<p>{{direccion.idDireccion}}</p>
 
-    <table class="table table-dark table-striped table-responsive border border-success table-hover">
-        <thead>
-            <tr>
-                <th>
-                    <p>Nombre del Usuario</p>
-                </th>
-                <th>
-                    <p>Informacion de contacto</p>
-                </th>
-                <th>
-                    <p>Domicilio</p>
-                </th>
-
-            </tr>
-        </thead>
-        @for (usuario of usuarios; track usuario.IdUsuario) {
-
-        <tbody>
-            <tr>
-                <td>
-                    <li>
-                        <p>Nombre: {{usuario.Nombre + ' ' + usuario.ApellidoPaterno + ' ' + usuario.ApellidoMaterno}}
-                        </p>
-                    </li>
-                    <li>
-                        <p>CURP: {{usuario.CURP}}</p>
-                    </li>
-                    <li>
-                        <p>Fecha de nacimiento: {{usuario.FechaNacimiento}}</p>
-                    </li>
-                    <li>
-                        <img [src]="'data:image/png;base64,' + usuario.Imagen" style="width:  150px" />
-                    </li>
-                </td>
-                <td>
-                    <li>
-                        <p>Telefono: {{usuario.NumeroTelefonico}}</p>
-                    </li>
-                    <li>
-                        <p>Username: {{usuario.Username}}</p>
-                    </li>
-                    <li>
-                        <p>Correo: {{usuario.Email}}</p>
-                    </li>
-
-                </td>
-                <td>
-                    @for(direccion of usuario.Direcciones; track direccion.idDireccion){
-                    <li>
-                        <p>{{direccion.idDireccion}}</p>
-                        <p>{{direccion.Calle}} {{direccion.NumeroInterior}} {{direccion.NumeroExterior}}</p>
-                        <p></p>
-                        <p>{{direccion.colonia.Nombre}}</p>
-                    </li>
-
-                    }
-
-                </td>
-
-
-            </tr>
-
-        </tbody>
-
-        }
-    </table>
-
-
-
-
-
-</body>
+} -->
+}
