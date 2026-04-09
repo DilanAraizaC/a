@@ -16,7 +16,7 @@ export interface UsuarioModel{
     Status : number,
     Username: string,
     Rol: Rol,
-    Direcciones: Direccion
+    Direcciones: Direccion []
 }
 
 
