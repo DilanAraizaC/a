@@ -46,8 +46,8 @@ export class UsuarioService{
   }
 
 
-  DeleteUsuario(usuario : UsuarioModel) : Observable<Result<UsuarioModel>>{
-    return this.http.delete<Result<UsuarioModel>>(this.url + "/delete" + usuario.IdUsuario);
+  DeleteUsuario(usuario : any) : Observable<Result<UsuarioModel>>{
+    return this.http.delete<Result<UsuarioModel>>(this.url + "/delete/" + usuario);
 
   }
 
@@ -58,6 +58,7 @@ export class UsuarioService{
   getColonia(idMunicipio: any): Observable<Result<Colonia>>{
     return this.http.get<Result<Colonia>>(this.urlColonia+ idMunicipio)
   }
+
 
 
   

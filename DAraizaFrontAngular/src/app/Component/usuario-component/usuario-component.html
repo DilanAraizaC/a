@@ -4,7 +4,15 @@
     }
 </style>
 
-<body class="bg-dark text-white">
+<body class="bg-dark text-white p-5">
+
+    <div class="d-flex">
+        <div class="ms-auto">
+                <a [routerLink]="['/form']" class="btn btn-success"><i class="bi bi-person-add"></i> Agregar usuario</a>
+
+        </div>
+
+    </div>
 
     <h1 class="text-center mb-4 mt-4">Información del usuario</h1>
 
@@ -23,6 +31,10 @@
                 </th>
                 <th>
                     <p>Acciones</p>
+                </th>
+
+                <th>
+                    <p>Status</p>
                 </th>
 
             </tr>
@@ -80,14 +92,39 @@
                 </td>
                 <td>
                     <a class="btn btn-success"><i class="bi bi-pencil-fill"></i></a> 
-                            <a class="btn btn-danger" href= "#" data-bs-target="#modalEliminar" data-bs-toggle="modal" th:onclick="|ChangeUrl(${usuario.idUsuario})|"><i class="bi bi-person-dash"></i></a>
+                            <a class="btn btn-danger"  data-bs-target="#modalEliminar" data-bs-toggle="modal" (click)="Delete(usuario.IdUsuario)"><i class="bi bi-person-dash"></i></a>
                             <a  class="btn btn-warning" ><i class="bi bi-info-circle"></i></a>
+                </td>
+
+                <td>
+                    @if (usuario.Status == 1) {
+                     <div class="form-check form-switch" >
+                            <input class="form-check-input switch-estatus" 
+                                   type="checkbox" 
+                                   role="switch" 
+                                   checked
+                                   >
+
+
+                        </div>
+                    }@else {
+                        <div class="form-check form-switch" >
+                            <input class="form-check-input switch-estatus" 
+                                   type="checkbox" 
+                                   role="switch"  
+                                   
+                                   >
+
+
+                        </div>
+                    }
                 </td>
 
 
             </tr>
 
         </tbody>
+
 
         }
     </table>

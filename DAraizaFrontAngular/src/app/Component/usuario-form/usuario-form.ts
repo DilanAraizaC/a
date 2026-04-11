@@ -7,10 +7,11 @@ import { Rol } from '../../Interface/RolModel';
 import { Estado } from '../../Interface/EstadoModel';
 import { Municipio } from '../../Interface/MunicipioModel';
 import { Colonia } from '../../Interface/ColoniaModel';
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-usuario-form',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './usuario-form.html',
   styleUrl: './usuario-form.css',
 })
@@ -19,10 +20,10 @@ export class UsuarioForm {
 
   public paises: Pais[] = [];
   public roles: Rol[] = [];
-  public estados : Estado [] = [];
-  public municipios: Municipio [] = [];
-  public colonias: Colonia [] = [];
-    public identificador: number | undefined;
+  public estados: Estado[] = [];
+  public municipios: Municipio[] = [];
+  public colonias: Colonia[] = [];
+  public identificador: number | undefined;
 
 
 
@@ -32,18 +33,57 @@ export class UsuarioForm {
 
   public form: FormGroup = this.formularioReactivo.group({
 
-    nombre: [''],
-    apellidoPaterno: [''],
-    apellidoMaterno: [''],
-    numeroTelefonico: [''],
-    fechaNacimiento: [''],
+    Nombre: [''],
+    ApellidoPaterno: [''],
+    ApellidoMaterno: [''],
+    NumeroTelefonico: [''],
+    FechaNacimiento: [''],
     CURP: [''],
-    sexo: [''],
-    username: [''],
-    celular: [''],
-    email: [''],
-    password: ['']
+    Sexo: [''],
+    Username: [''],
+    Celular: [''],
+    Email: [''],
+    Password: [''],
+
+    Rol: this.formularioReactivo.group({
+      idRol: ['']
+    }),
+
+    Direcciones: this.formularioReactivo.array([
+      this.crearDireccion()
+    ])
   });
+
+  crearDireccion(): FormGroup {
+    return this.formularioReactivo.group({
+      Calle: [''],
+      NumeroInterior: [''],
+      NumeroExterior: [''],
+
+      colonia: this.formularioReactivo.group({
+        idColonia: [''],
+        municipio: this.formularioReactivo.group({
+          idMunicipio: [''],
+          estado: this.formularioReactivo.group({
+            idEstado: [''],
+            pais: this.formularioReactivo.group({
+              idPais: ['']
+            })
+
+          })
+        })
+      })
+
+    })
+
+
+  }
+
+enviarDatosform(){
+  console.log(this.form.value)
+}
+
+
 
   enviarDatos() {
 
@@ -76,32 +116,32 @@ export class UsuarioForm {
     )
   }
 
-  GetRol(){
+  GetRol() {
     this.usuarioService.getRol().subscribe(
-      data =>{
+      data => {
         this.roles = data.objects;
         console.log(data)
-      },error =>{
+      }, error => {
 
       }
-      
+
 
     )
   }
- cambioPais(event: Event) {
+  cambioPais(event: Event) {
     const selectElement = event.target as HTMLSelectElement;
-    this.identificador = +selectElement.value;
+    this.identificador =+ selectElement.value;
     console.log('ID seleccionado:', selectElement.value);
     this.GetEstado();
     //this.getEstados(this.identificador);
   };
 
-  GetEstado(){
+  GetEstado() {
     this.usuarioService.getEstado(this.identificador).subscribe(
-      data =>{
+      data => {
         this.estados = data.objects;
         console.log(data);
-      }, error =>{
+      }, error => {
 
       }
     )
@@ -141,8 +181,8 @@ export class UsuarioForm {
       }
     )
 
-  
 
-}
+
+  }
 }
 
