@@ -56,6 +56,11 @@ export class UsuarioComponent implements OnInit {
        )
      }
 
+     imagenDefecto(event : any){
+      event.target.src = './Shared/iconoDefecto.png';
+
+     }
+
 
 }
        

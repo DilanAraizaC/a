@@ -448,27 +448,27 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content bg-dark border-success">
                 <div class="modal-header bg-dark text-white">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Actualizar Imagen</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">Actualizar imagen</h5>
                 </div>
                 <div class="modal-body">
                     <form >
 
-                        <div class="col-md-4 text-center d-flex flex-column align-items-center">
-                            <div class="card p-3 w-100 h-100">
-                                <label class="form-label fw-bold">Imagen</label>
+                        <div class="bg-dark text-center d-flex flex-column align-items-center">
+                            <div class="card p-3 w-100 h-100 bg-dark text-white">
+                                <label class="form-label fw-bold">Seleccione una imagen</label>
                                 <input type="file" (change)="imagenCargada($event)" accept="image/*"
-                                    class="form-control mb-2" name="imagenFile" id="imagenFile"
+                                    class="form-control mb-2 bg-dark text-success" name="imagenFile" id="imagenFile"
                                     formControlName="Imagen">
                                 <img id="previewImage" style="max-width: 300px; max-height: auto" class="mx-auto"
-                                    src="#" />
+                                    [src]="imagenSeleccionada" />
                             </div>
                         </div>
 
                     </form>
 
                 </div>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <button type="submit" class="btn btn-success mb-4 w-10" (click)="updateImagen(usuario?.IdUsuario)">Guardar</button>
+                <p> </p><button type="button" class="btn btn-danger m-2" data-dismiss="modal">Cerrar</button> <button type="submit" class="btn btn-success m-2 w-10" (click)="updateImagen(usuario?.IdUsuario)">Guardar</button>
+                
             </div>
         </div>
 

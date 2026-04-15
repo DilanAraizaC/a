@@ -67,7 +67,7 @@
                     }
                    
                     <li>
-                        <img [src]="'data:image/png;base64,' + usuario.Imagen" style="width:  150px" />
+                        <img [src]="'data:image/png;base64,' + usuario.Imagen" style="width:  150px" (error)="imagenDefecto($event)" alt="Sin imagen" />
                     </li>
                 </td>
                 <td>

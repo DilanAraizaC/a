@@ -34,7 +34,6 @@ private formularioReactivo = inject(FormBuilder)
   public identificador: number | undefined;
   public imagenSeleccionada: File | undefined;
 
-
   ngOnInit(): void {
   this.route.params.subscribe(params => {
     const idUsuario = params['idUsuario'];
@@ -213,6 +212,8 @@ crearDirecciones(): FormGroup{
     }
     );
   }
+
+  
 
 
 }
